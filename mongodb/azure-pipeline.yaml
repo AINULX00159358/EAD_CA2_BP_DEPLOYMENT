@@ -1,0 +1,13 @@
+trigger: none
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+  - task: Kubernetes@1
+    displayName: Azure voting app
+    inputs:
+      connectionType: Kubernetes Service Connection
+      kubernetesServiceEndpoint: ainhab-serviceaccount-connection
+      command: apply
+      arguments: -f deployment.yaml
