@@ -1,0 +1,11 @@
+helm repo add bitnami https://charts.bitnami.com/bitnami
+helm install mongodb bitnami/mongodb --set mongodbRootPassword=root --set mongodbUsername=myapp --set mongodbPassword=myapp --set mongodbDatabase=mydb --set replicaSet.enabled=true
+
+default: {
+  adapter: 'sails-mongo',
+  url: "mongodb://" + process.env.DATABASE_USER + ":" + process.env.DATABASE_PASSWORD + "@" + process.env.DATABASE_HOST + "/" + process.env.DATABASE_NAME
+}
+
+kubectl create secret generic my-mongodb --from-literal=host=MONGODB-IP-ADDRESS --from-literal=username=myapp --from-literal=password=myapp --from-literal=database=mydb --from-literal=port=27017
+
+

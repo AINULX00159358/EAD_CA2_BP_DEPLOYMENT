@@ -1,0 +1,3 @@
+eval $(minikube docker-env)
+docker pull mongo:latest
+docker tag mongo:latest eadca2/mongodb:latest
