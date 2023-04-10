@@ -2,7 +2,7 @@ dependencies:
   #  - name: bpdataservice
   #    repository: file://charts/bp_data_service-1.0.0.tgz
   #    version: 1.0.0
-  - name: bbinfoservice
+  - name: bpinfoservice
     repository: oci://ainhabacr.azurecr.io/charts/bpinfoservice
     vesion: 1.0.0
 #  - name: bprecordingservice
