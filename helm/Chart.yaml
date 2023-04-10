@@ -23,15 +23,15 @@ version: 1.0.0
 # It is recommended to use it with quotes.
 appVersion: "1.0.0"
 dependencies:
-  #  - name: bpdataservice
-  #    repository: file://charts/bp_data_service-1.0.0.tgz
-  #    version: 1.0.0
+  - name: bpdataservice
+    repository: "oci://ainhabacr.azurecr.io/charts/bpdataservice"
+    version: "1.0.0"
   - name: bpinfoservice
     repository: "oci://ainhabacr.azurecr.io/charts"
     version: "1.0.0"
-#  - name: bprecordingservice
-#    repository: file://charts/bp_recording_service-1.0.0.tgz
-#    vesion: 1.0.0
-#  - name: bpuiservice
-#    repository: file://charts/bp_ui_service-1.0.0.tgz
-#    version: 1.0.0
+  - name: bprecordingservice
+    repository: "oci://ainhabacr.azurecr.io/charts/bprecordingservice"
+    version: "1.0.0"
+  - name: bpuiservice
+    repository: "oci://ainhabacr.azurecr.io/charts/bpuiservice"
+    version: "1.0.0"
