@@ -37,4 +37,4 @@ steps:
       upgradetiller: false
       save: false
       install: false
-      arguments: --install
+      arguments: --install --wait --timeout 2m
