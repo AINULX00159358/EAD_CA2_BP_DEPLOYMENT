@@ -15,4 +15,4 @@ steps:
       helmVersion: 3.9.3
       kubectlVersion: 1.26.3
   - bash: |
-      helm uninstall bpwebapp --purge --wait
+      helm uninstall bpwebapp --wait
