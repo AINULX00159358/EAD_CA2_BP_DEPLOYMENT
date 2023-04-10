@@ -1,5 +1,5 @@
 apiVersion: v2
-name: bp_web_app
+name: bpwebapp
 description: A Helm chart for Kubernetes, part of EAD CA2 2023
 
 # A chart can be either an 'application' or a 'library' chart.
@@ -23,15 +23,15 @@ version: 1.0.0
 # It is recommended to use it with quotes.
 appVersion: "1.0.0"
 dependencies:
-  - name: bp_data_service
-    repository: file://charts/bp_data_service-1.0.0.tgz
-    version: 1.0.0
-  - name: bp_info_service
-    repository: file://charts/bp_info_service-1.0.0.tgz
+#  - name: bpdataservice
+#    repository: file://charts/bp_data_service-1.0.0.tgz
+#    version: 1.0.0
+  - name: bbinfoservice
+    repository: oci://ainhabacr.azurecr.io/charts/bpinfoservice
     vesion: 1.0.0
-  - name: bp_recording_service
-    repository: file://charts/bp_recording_service-1.0.0.tgz
-    vesion: 1.0.0
-  - name: bp_ui_service
-    repository: file://charts/bp_ui_service-1.0.0.tgz
-    version: 1.0.0
+#  - name: bprecordingservice
+#    repository: file://charts/bp_recording_service-1.0.0.tgz
+#    vesion: 1.0.0
+#  - name: bpuiservice
+#    repository: file://charts/bp_ui_service-1.0.0.tgz
+#    version: 1.0.0
