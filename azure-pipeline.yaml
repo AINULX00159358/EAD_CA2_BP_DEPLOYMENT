@@ -29,13 +29,6 @@ variables:
 
 steps:
   # Package and deploy Helm charts v0
-  - task: HelmDeploy@0
-    displayName: 'Package the helm chart'
-    inputs:
-      command: 'package'
-      chartPath: '$(Build.SourcesDirectory)/helm'
-      save: true
-  
   - task: AzureCLI@2
     displayName: 'Login to Azure Container Registry'
     inputs:
@@ -45,9 +38,16 @@ steps:
       inlineScript: |
         az acr login --name $(ACR.Name)
   - task: HelmInstaller@1
-    displayName: 'Helm Push to Container Registry'
+    displayName: 'Install Helm'
     inputs:
       helmVersionToInstall: 'latest'
+  - task: HelmDeploy@0
+    displayName: 'Package the helm chart'
+    inputs:
+      command: 'package'
+      updatedependency: true
+      chartPath: '$(Build.SourcesDirectory)/helm'
+      save: true
   - bash: |
       ls -l $(Build.ArtifactStagingDirectory)
       helm push $(Build.ArtifactStagingDirectory)/bpwebapp-1.0.0.tgz oci://$(ACR.Name).azurecr.io/charts/
