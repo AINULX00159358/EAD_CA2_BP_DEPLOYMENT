@@ -5,9 +5,9 @@ pool:
 
 steps:
   - task: Kubernetes@1
-    displayName: Azure voting app
+    displayName: MongoDB Deployment
     inputs:
       connectionType: Kubernetes Service Connection
-      kubernetesServiceEndpoint: ainhab-serviceaccount-connection
+      kubernetesServiceEndpoint: 52e7b636-9ce7-4f7d-be99-3bb1c59c1584
       command: apply
       arguments: -f deployment.yaml
