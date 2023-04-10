@@ -1,4 +1,4 @@
-apiVersion: v2
+apiVersion: v1
 name: bpwebapp
 description: A Helm chart for Kubernetes, part of EAD CA2 2023
 
@@ -22,3 +22,16 @@ version: 1.0.0
 # follow Semantic Versioning. They should reflect the version the application is using.
 # It is recommended to use it with quotes.
 appVersion: "1.0.0"
+dependencies:
+  #  - name: bpdataservice
+  #    repository: file://charts/bp_data_service-1.0.0.tgz
+  #    version: 1.0.0
+  - name: bpinfoservice
+    repository: oci://ainhabacr.azurecr.io/charts
+    version: 1.0.0
+#  - name: bprecordingservice
+#    repository: file://charts/bp_recording_service-1.0.0.tgz
+#    vesion: 1.0.0
+#  - name: bpuiservice
+#    repository: file://charts/bp_ui_service-1.0.0.tgz
+#    version: 1.0.0
