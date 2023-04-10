@@ -1,0 +1,18 @@
+# test deploy in kubernates
+
+trigger:
+  - None
+
+pool:
+  vmImage: ubuntu-latest
+variables:
+  ACR.Name: 'ainhabacr'
+  Azure.ServiceConnection: 'ainhabacrconnection'
+steps:
+  - task: HelmInstaller@0
+    displayName: 'installHelm'
+    inputs:
+      helmVersion: 3.9.3
+      kubectlVersion: 1.26.3
+  - bash: |
+      helm uninstall bpwebapp --purge --wait
