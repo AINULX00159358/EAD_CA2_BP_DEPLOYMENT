@@ -24,14 +24,14 @@ version: 1.0.0
 appVersion: "1.0.0"
 dependencies:
   - name: bpdataservice
-    repository: "oci://ainhabacr.azurecr.io/charts/bpdataservice"
+    repository: "oci://ainhabacr.azurecr.io/charts"
     version: "1.0.0"
   - name: bpinfoservice
     repository: "oci://ainhabacr.azurecr.io/charts"
     version: "1.0.0"
   - name: bprecordingservice
-    repository: "oci://ainhabacr.azurecr.io/charts/bprecordingservice"
+    repository: "oci://ainhabacr.azurecr.io/charts"
     version: "1.0.0"
   - name: bpuiservice
-    repository: "oci://ainhabacr.azurecr.io/charts/bpuiservice"
+    repository: "oci://ainhabacr.azurecr.io/charts"
     version: "1.0.0"
