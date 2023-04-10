@@ -32,7 +32,6 @@ steps:
       chartType: Name
       chartName: 'oci://$(ACR.Name).azurecr.io/charts/bpwebapp'
       # releaseName: bpwebapp
-      updatedependency: true
       waitForExecution: false
       force: true
       upgradetiller: false
