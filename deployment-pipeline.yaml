@@ -28,13 +28,13 @@ steps:
       connectionType: Kubernetes Service Connection
       kubernetesServiceEndpoint: 52e7b636-9ce7-4f7d-be99-3bb1c59c1584
       namespace: default
-      command: 'install'
+      command: 'upgrade'
       chartType: Name
       chartName: 'oci://$(ACR.Name).azurecr.io/charts/bpwebapp'
-      # releaseName: bpwebapp
+      releaseName: bpwebapp
       waitForExecution: false
       force: true
       upgradetiller: false
       save: false
       install: false
-      arguments: --timeout 1m
+      arguments: --install
