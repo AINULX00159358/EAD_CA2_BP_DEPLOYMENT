@@ -4,10 +4,20 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+  # - task: Kubernetes@1
+  #   displayName: MongoDB Deployment
+  #   inputs:
+  #     connectionType: Kubernetes Service Connection
+  #     kubernetesServiceEndpoint: 52e7b636-9ce7-4f7d-be99-3bb1c59c1584
+  #     command: apply
+  #     arguments: -f $(Build.SourcesDirectory)/mongodb/deployment.yaml
+
   - task: Kubernetes@1
-    displayName: MongoDB Deployment
     inputs:
-      connectionType: Kubernetes Service Connection
-      kubernetesServiceEndpoint: 52e7b636-9ce7-4f7d-be99-3bb1c59c1584
-      command: apply
-      arguments: -f $(Build.SourcesDirectory)/mongodb/deployment.yaml
+      connectionType: 'Kubernetes Service Connection'
+      kubernetesServiceEndpoint: 'ainhab-blue'
+      namespace: 'blue'
+      command: 'apply'
+      arguments: '-f $(Build.SourcesDirectory)/mongodb/deployment.yaml'
+      secretType: 'dockerRegistry'
+      containerRegistryType: 'Azure Container Registry'
