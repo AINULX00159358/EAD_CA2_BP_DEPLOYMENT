@@ -16,9 +16,28 @@ steps:
       kubectlVersion: 1.26.3
   - task: HelmDeploy@0
     displayName: 'helm uninstall'
+    continueOnError: true
     inputs:
       connectionType: Kubernetes Service Connection
       kubernetesServiceEndpoint: 'ainhab-blue'
+      namespace: 'blue'
+      command: 'uninstall'
+      chartType: Name
+      chartName: 'oci://$(ACR.Name).azurecr.io/charts/bpwebapp'
+      releaseName: bpwebapp
+      waitForExecution: false
+      force: true
+      upgradetiller: false
+      save: false
+      install: false
+      arguments: bpwebapp
+    
+  - task: HelmDeploy@0
+    displayName: 'helm uninstall'
+    continueOnError: true
+    inputs:
+      connectionType: Kubernetes Service Connection
+      kubernetesServiceEndpoint: 'ainhab-green'
       namespace: 'green'
       command: 'uninstall'
       chartType: Name
