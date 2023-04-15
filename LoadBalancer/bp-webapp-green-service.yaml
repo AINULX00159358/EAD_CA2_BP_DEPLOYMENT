@@ -7,3 +7,17 @@ spec:
   externalName: bpfesvc.green.svc.cluster.local
   ports:
   - port: 27017
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: bp-web-app
+  annotations:
+    kubernetes.io/ingress.class: ingress-nginx
+spec:
+  rules:
+  - http:
+      paths:
+      - backend:
+          serviceName: bp-webapp-main-service
+          servicePort: 27017
