@@ -19,7 +19,7 @@ steps:
     inputs:
       connectionType: Kubernetes Service Connection
       kubernetesServiceEndpoint: 'ainhab-blue'
-      namespace: 'blue'
+      namespace: 'green'
       command: 'uninstall'
       chartType: Name
       chartName: 'oci://$(ACR.Name).azurecr.io/charts/bpwebapp'
