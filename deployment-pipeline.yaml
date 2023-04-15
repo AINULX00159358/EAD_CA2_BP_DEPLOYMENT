@@ -24,15 +24,15 @@ steps:
     displayName: 'helm upgrade or install ap'
     inputs:
       connectionType: Kubernetes Service Connection
-      kubernetesServiceEndpoint: ainhab-blue
-      namespace: blue
+      kubernetesServiceEndpoint: 'ainhab-blue'
+      namespace: 'blue'
       command: 'upgrade'
       chartType: Name
       chartName: 'oci://ainhabacr.azurecr.io/charts/bpwebapp'
-      releaseName: bpwebapp
+      releaseName: 'bpwebapp'
       waitForExecution: false
       force: true
       upgradetiller: false
       save: false
       install: false
-      arguments: --install
+      arguments: '--install'
