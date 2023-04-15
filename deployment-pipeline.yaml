@@ -36,3 +36,13 @@ steps:
       save: false
       install: false
       arguments: '--install'
+  - task: Kubernetes@1
+    inputs:
+      connectionType: 'Kubernetes Service Connection'
+      kubernetesServiceEndpoint: 'default-svc-conn'
+      namespace: 'default'
+      command: 'apply'
+      useConfigurationFile: true
+      configuration: '$(Build.SourcesDirectory)/LoadBalancer/bp-webapp-main-service.yaml'
+      secretType: 'dockerRegistry'
+      containerRegistryType: 'Azure Container Registry'
