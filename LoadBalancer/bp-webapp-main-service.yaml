@@ -8,16 +8,19 @@ spec:
   ports:
   - port: 27017
 ---
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: bp-web-app
   annotations:
-    kubernetes.io/ingress.class: ingress-nginx
+    kubernetes.io/ingress.class: nginx
 spec:
   rules:
-  - http:
-      paths:
-      - backend:
-          serviceName: bp-webapp-main-service
-          servicePort: 27017
+    - http:
+        paths:
+          - path: /
+            backend:
+              service:
+                name: bp-webapp-main-service
+                port:
+                  number: 27017
