@@ -15,8 +15,8 @@ steps:
   - task: Kubernetes@1
     inputs:
       connectionType: 'Kubernetes Service Connection'
-      kubernetesServiceEndpoint: 'ainhab-blue'
-      namespace: 'blue'
+      kubernetesServiceEndpoint: 'MongoSvcConn'
+      namespace: 'mongo'
       command: 'apply'
       arguments: '-f $(Build.SourcesDirectory)/mongodb/deployment.yaml'
       secretType: 'dockerRegistry'
