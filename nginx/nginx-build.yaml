@@ -27,11 +27,6 @@ variables:
 
 
 steps:
-#  - task: NodeTool@0
-#    inputs:
-#      versionSource: 'spec'
-#      versionSpec: '6.x'
-#    displayName: 'Installing nodejs as a pre-requiste for unittest'
   - task: Docker@2
     displayName: Build and push an image to container registry
     inputs:
