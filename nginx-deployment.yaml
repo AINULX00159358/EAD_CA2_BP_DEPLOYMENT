@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - image: ainhabacr.azurecr.io/eadca2/reverse-proxy:v1
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         name: bpwebapp-proxy
         ports:
         - containerPort: 80
