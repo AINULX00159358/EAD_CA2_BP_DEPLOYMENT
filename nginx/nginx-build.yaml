@@ -37,3 +37,20 @@ steps:
       containerRegistry: $(dockerRegistryServiceConnection)
       tags: |
         $(tag)
+  - task: AzureCLI@2
+    inputs:
+      azureSubscription: 'Azure for Students(7263e463-da66-4888-a897-f34f5acea14b)'
+      scriptType: 'bash'
+      scriptLocation: 'inlineScript'
+      inlineScript: 'az acr login --name $(ACR.Name)'
+  - task: KubectlInstaller@0
+    displayName: 'Install Kubectl 1.26.3'
+    inputs:
+      kubectlVersion: 1.26.3
+  - task: KubernetesManifest@1
+    displayName: 'deploy Nginx'
+    inputs:
+      kubernetesServiceConnection: 'default-svc-conn'
+      namespace: default
+      manifests: '$(Build.SourcesDirectory)/nginx-deployment.yaml'
+      rolloutStatusTimeout: 30
