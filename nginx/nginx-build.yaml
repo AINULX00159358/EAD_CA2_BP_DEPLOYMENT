@@ -36,6 +36,7 @@ steps:
     displayName: Build and push an image to container registry
     inputs:
       command: buildAndPush
+      buildContext: $(Build.SourcesDirectory)/nginx
       repository: $(imageRepository)
       dockerfile: $(dockerfilePath)
       containerRegistry: $(dockerRegistryServiceConnection)
