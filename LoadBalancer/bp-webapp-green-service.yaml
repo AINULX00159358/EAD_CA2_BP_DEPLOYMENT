@@ -4,6 +4,6 @@ metadata:
   name: service-live
 spec:
   type: ExternalName
-  externalName: bpfeapp.green.svc.cluster.local
+  externalName: bpfesvc.green.svc.cluster.local
   ports:
     - port: 32137
