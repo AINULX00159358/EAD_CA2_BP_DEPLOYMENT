@@ -52,5 +52,5 @@ steps:
     inputs:
       kubernetesServiceConnection: 'default-svc-conn'
       namespace: default
-      manifests: '$(Build.SourcesDirectory)/nginx-deployment.yaml'
+      manifests: '$(Build.SourcesDirectory)/nginx/nginx-deployment.yaml'
       rolloutStatusTimeout: 30
