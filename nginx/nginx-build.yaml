@@ -47,10 +47,12 @@ steps:
     displayName: 'Install Kubectl 1.26.3'
     inputs:
       kubectlVersion: 1.26.3
-  - task: KubernetesManifest@1
-    displayName: 'deploy Nginx'
+  - task: Kubernetes@1
     inputs:
-      kubernetesServiceConnection: 'default-svc-conn'
-      namespace: default
-      manifests: '$(Build.SourcesDirectory)/nginx-deployment.yaml'
-      rolloutStatusTimeout: 30
+      connectionType: 'Kubernetes Service Connection'
+      kubernetesServiceEndpoint: 'default-svc-conn'
+      namespace: 'default'
+      command: 'apply'
+      arguments: '-f $(Build.SourcesDirectory)/nginx-deployment.yaml --timeout=30s'
+      secretType: 'dockerRegistry'
+      containerRegistryType: 'Azure Container Registry'
