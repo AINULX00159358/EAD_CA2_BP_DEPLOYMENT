@@ -24,9 +24,24 @@ variables:
   azureACRResourceGroup: 'k8s-resource-group'
   ACR.Name: 'ainhabacr'
   tag: 'v1'
+  deploy: true
+  trivyVersion: 0.40.0
+  ScanResultsPath: trivyScan
 
 
 steps:
+  - task: DockerInstaller@0
+    displayName: 'Install Docker 17.09.0-ce'
+
+  - script: |
+       docker build --no-cache --tag reverse-proxy-nginx:CA2_TEST_V1 $(Build.SourcesDirectory)/nginx
+       sudo apt-get install rpm
+       wget -q https://github.com/aquasecurity/trivy/releases/download/v$(trivyVersion)/trivy_$(trivyVersion)_Linux-64bit.deb
+       sudo dpkg -i trivy_$(trivyVersion)_Linux-64bit.deb
+       mkdir $(ScanResultsPath)
+       trivy image --scanners vuln,config,secret --severity CRITICAL,HIGH -o $(ScanResultsPath)/results.table reverse-proxy-nginx:CA2_TEST_V1
+    displayName: 'Scan using Trivy scan'
+
   - task: Docker@2
     displayName: Build and push an image to container registry
     inputs:
@@ -38,19 +53,25 @@ steps:
       tags: |
         $(tag)
   - task: AzureCLI@2
+    condition: eq(variables.deploy, true)
     inputs:
       azureSubscription: 'Azure for Students(7263e463-da66-4888-a897-f34f5acea14b)'
       scriptType: 'bash'
       scriptLocation: 'inlineScript'
       inlineScript: 'az acr login --name $(ACR.Name)'
   - task: KubectlInstaller@0
+    condition: eq(variables.deploy, true)
     displayName: 'Install Kubectl 1.26.3'
     inputs:
       kubectlVersion: 1.26.3
   - task: KubernetesManifest@1
+    condition: eq(variables.deploy, true)
     displayName: 'deploy Nginx'
     inputs:
       kubernetesServiceConnection: 'default-svc-conn'
       namespace: default
       manifests: '$(Build.SourcesDirectory)/nginx/nginx-deployment.yaml'
       rolloutStatusTimeout: 30
+  - task: PublishHtmlReport@1
+    inputs:
+      reportDir: '$(ScanResultsPath)/results.table'
