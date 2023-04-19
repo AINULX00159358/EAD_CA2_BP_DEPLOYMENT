@@ -6,7 +6,7 @@ pool:
 variables:
   trivyVersion: 0.40.0
   ScanResultsPath: trivyScan
-  deploy: false
+  deploy: true
 
 steps:
 
