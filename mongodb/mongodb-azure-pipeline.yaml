@@ -3,11 +3,28 @@ trigger: none
 pool:
   vmImage: ubuntu-latest
 
+variables:
+  trivyVersion: 0.40.0
+  ScanResultsPath: trivyScan
+  deploy: false
+
 steps:
 
   #   Mongo DB Image will be downloaded from Docker Hub
+  - task: DockerInstaller@0
+    displayName: 'Install Docker 17.09.0-ce'
+
+  - script: |
+      docker pull mongo
+      sudo apt-get install rpm
+       wget -q https://github.com/aquasecurity/trivy/releases/download/v$(trivyVersion)/trivy_$(trivyVersion)_Linux-64bit.deb
+       sudo dpkg -i trivy_$(trivyVersion)_Linux-64bit.deb
+       mkdir $(ScanResultsPath)
+       trivy image --scanners vuln,config,secret --severity CRITICAL,HIGH mongo
+    displayName: 'Scan using Trivy scan'
 
   - task: Kubernetes@1
+    condition: eq(variables.deploy, true)
     inputs:
       connectionType: 'Kubernetes Service Connection'
       kubernetesServiceEndpoint: 'MongoSvcConn'
