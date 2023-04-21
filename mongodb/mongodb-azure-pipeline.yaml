@@ -30,6 +30,6 @@ steps:
       kubernetesServiceEndpoint: 'MongoSvcConn'
       namespace: 'mongo'
       command: 'apply'
-      arguments: '-f $(Build.SourcesDirectory)/mongodb/mongodb-mongodb-deployment.yaml'
+      arguments: '-f $(Build.SourcesDirectory)/mongodb/mongodb-deployment.yaml'
       secretType: 'dockerRegistry'
       containerRegistryType: 'Azure Container Registry'
