@@ -24,7 +24,7 @@ variables:
   azureACRResourceGroup: 'k8s-resource-group'
   ACR.Name: 'ainhabacr'
   tag: 'v1'
-  deploy: false
+  deploy: true
   trivyVersion: 0.40.0
   ScanResultsPath: trivyScan
 
