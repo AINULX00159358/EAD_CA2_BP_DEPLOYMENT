@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    service.beta.kubernetes.io/azure-load-balancer-resource-group: {{ .Values.loadBalancer.resource-group }}
+    service.beta.kubernetes.io/azure-load-balancer-resource-group: {{ .Values.loadBalancer.resourcegroup }}
   name: azure-load-balancer-{{ .Release.Namespace }}
 spec:
   loadBalancerIP: {{ .Values.loadBalancer.IP }}
