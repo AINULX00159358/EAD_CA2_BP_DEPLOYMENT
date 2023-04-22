@@ -3,7 +3,7 @@ kind: Service
 metadata:
   annotations:
     service.beta.kubernetes.io/azure-load-balancer-resource-group: {{ .Values.loadBalancer.resourcegroup }}
-  name: azure-load-balancer-{{ .Release.Namespace }}
+  name: azure-load-balancer
 spec:
   loadBalancerIP: {{ .Values.loadBalancer.IP }}
   type: LoadBalancer
