@@ -1,0 +1,43 @@
+trigger:
+  - None
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  IPADDRESS: 20.223.44.240
+  ACR.Name: 'ainhabacr'
+
+steps:
+  - task: AzureCLI@2
+    displayName: 'Login to Azure Container Registry'
+    inputs:
+      azureSubscription: 'Azure for Students(7263e463-da66-4888-a897-f34f5acea14b)'
+      scriptType: bash
+      scriptLocation: inlineScript
+      inlineScript: |
+        az acr login --name $(ACR.Name)
+
+  - task: HelmInstaller@1
+    displayName: 'Install Helm'
+
+  - task: HelmDeploy@0
+    displayName: 'helm uninstall'
+    inputs:
+      connectionType: 'Kubernetes Service Connection'
+      kubernetesServiceConnection: 'ainhab-green'
+      namespace: green
+      command: uninstall
+      arguments: 'bpwebapp-loadbalancer'
+    continueOnError: true
+
+  - task: HelmDeploy@0
+    displayName: 'helm upgrade'
+    inputs:
+      connectionType: 'Kubernetes Service Connection'
+      kubernetesServiceConnection: 'ainhab-blue'
+      namespace: blue
+      command: install
+      chartName: 'oci://ainhabacr.azurecr.io/charts/bpwebapp-loadbalancer'
+      chartVersion: 1.0.0
+      releaseName: 'bpwebapp-loadbalancer'
+      overrideValues: 'loadBalancer.IP=$(IPADDRESS)'
