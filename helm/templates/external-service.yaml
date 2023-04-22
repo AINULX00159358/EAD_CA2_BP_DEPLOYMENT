@@ -1,0 +1,9 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: service-{{ .Release.Namespace }}
+spec:
+  type: ExternalName
+  externalName: bpfesvc.{{ .Release.Namespace }}.svc.cluster.local
+  ports:
+    - port: 32137
