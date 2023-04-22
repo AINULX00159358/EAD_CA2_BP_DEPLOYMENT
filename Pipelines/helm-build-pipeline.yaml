@@ -61,4 +61,4 @@ steps:
   - bash: |
       ls -l $(Build.ArtifactStagingDirectory)
       helm push $(Build.ArtifactStagingDirectory)/bpwebapp-1.0.0.tgz oci://$(ACR.Name).azurecr.io/charts/
-      helm push $(Build.ArtifactStagingDirectory)/bpextsvc-1.0.0.tgz oci://$(ACR.Name).azurecr.io/charts/
+      helm push $(Build.ArtifactStagingDirectory)/bpwebapp-services-1.0.0.tgz oci://$(ACR.Name).azurecr.io/charts/
