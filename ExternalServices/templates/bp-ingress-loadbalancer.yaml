@@ -2,11 +2,14 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: bp-web-app-ingress
+  labels:
+    app.kubernetes.io/managed-by: "Helm"
   annotations:
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
     nginx.ingress.kubernetes.io/use-regex: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /$2
-spec:
+    meta.helm.sh/release-name: "bpwebapp-services"
+    meta.helm.sh/release-namespace: "default"
   ingressClassName: nginx
   rules:
     - http:
