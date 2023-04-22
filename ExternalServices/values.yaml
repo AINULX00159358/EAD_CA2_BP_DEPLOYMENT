@@ -1,2 +1,1 @@
-deployLoadBalancer: false
-golive: false
+live: blue
