@@ -29,6 +29,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: {{ .Value.live }}
+                name: {{ .Values.live }}
                 port:
                   number: 32137
