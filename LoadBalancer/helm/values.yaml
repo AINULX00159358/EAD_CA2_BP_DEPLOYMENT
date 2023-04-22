@@ -1,0 +1,5 @@
+loadBalancer:
+  resource-group: mc_k8s-resource-group_ainhabakscluster_northeurope
+  IP: 20.223.44.240
+  port: 31237
+  targetPort: 31237
