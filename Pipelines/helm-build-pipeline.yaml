@@ -52,17 +52,13 @@ steps:
       updatedependency: true
       chartPath: '$(Build.SourcesDirectory)/helm'
       save: true
-  - bash: |
-      ls -l $(Build.ArtifactStagingDirectory)
-      helm push $(Build.ArtifactStagingDirectory)/bpwebapp-1.0.0.tgz oci://$(ACR.Name).azurecr.io/charts/
-
   - task: HelmDeploy@0
     displayName: 'Package the helm chart'
     inputs:
       command: 'package'
       updatedependency: true
       chartPath: '$(Build.SourcesDirectory)/ExternalServices'
-      save: true
   - bash: |
       ls -l $(Build.ArtifactStagingDirectory)
+      helm push $(Build.ArtifactStagingDirectory)/bpwebapp-1.0.0.tgz oci://$(ACR.Name).azurecr.io/charts/
       helm push $(Build.ArtifactStagingDirectory)/bpextsvc-1.0.0.tgz oci://$(ACR.Name).azurecr.io/charts/
