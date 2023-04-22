@@ -1,9 +1,0 @@
-kind: Service
-apiVersion: v1
-metadata:
-  name: service-live
-spec:
-  type: ExternalName
-  externalName: bpfesvc.blue.svc.cluster.local
-  ports:
-    - port: 32137

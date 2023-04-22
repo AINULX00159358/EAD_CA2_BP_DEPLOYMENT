@@ -1,9 +1,11 @@
+{{- if .Values.golive -}}
 kind: Service
 apiVersion: v1
 metadata:
   name: service-live
 spec:
   type: ExternalName
-  externalName: bpfesvc.green.svc.cluster.local
+  externalName: bpfesvc.{{ .Release.Namespace }}.svc.cluster.local
   ports:
     - port: 32137
+{{- end -}}
