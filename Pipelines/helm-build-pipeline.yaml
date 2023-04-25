@@ -52,14 +52,6 @@ steps:
       updatedependency: true
       chartPath: '$(Build.SourcesDirectory)/helm'
       save: true
-  - task: HelmDeploy@0
-    displayName: 'Package the helm chart'
-    inputs:
-      command: 'package'
-      updatedependency: true
-      chartPath: '$(Build.SourcesDirectory)/LoadBalancer/helm'
-      save: true
   - bash: |
       ls -l $(Build.ArtifactStagingDirectory)
       helm push $(Build.ArtifactStagingDirectory)/bpwebapp-1.0.0.tgz oci://$(ACR.Name).azurecr.io/charts/
-      helm push $(Build.ArtifactStagingDirectory)/bpwebapp-loadbalancer-1.0.0.tgz oci://$(ACR.Name).azurecr.io/charts/

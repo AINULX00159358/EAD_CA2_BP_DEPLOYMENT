@@ -1,0 +1,446 @@
+{
+  "source": 2,
+  "revision": 4,
+  "description": null,
+  "createdBy": {
+    "displayName": "Ainul Habib",
+    "url": "https://spsprodweu5.vssps.visualstudio.com/Aa41847a8-0681-4efa-a7a4-138fb239ea05/_apis/Identities/b91e4554-a577-6b3b-b945-1f449baa5354",
+    "_links": {
+      "avatar": {
+        "href": "https://dev.azure.com/AINULX001593580081/_apis/GraphProfile/MemberAvatars/aad.YjkxZTQ1NTQtYTU3Ny03YjNiLWI5NDUtMWY0NDliYWE1MzU0"
+      }
+    },
+    "id": "b91e4554-a577-6b3b-b945-1f449baa5354",
+    "uniqueName": "X00159358@myTUDublin.ie",
+    "imageUrl": "https://dev.azure.com/AINULX001593580081/_apis/GraphProfile/MemberAvatars/aad.YjkxZTQ1NTQtYTU3Ny03YjNiLWI5NDUtMWY0NDliYWE1MzU0",
+    "descriptor": "aad.YjkxZTQ1NTQtYTU3Ny03YjNiLWI5NDUtMWY0NDliYWE1MzU0"
+  },
+  "createdOn": "2023-04-25T07:52:00.873Z",
+  "modifiedBy": {
+    "displayName": "Ainul Habib",
+    "url": "https://spsprodweu5.vssps.visualstudio.com/Aa41847a8-0681-4efa-a7a4-138fb239ea05/_apis/Identities/b91e4554-a577-6b3b-b945-1f449baa5354",
+    "_links": {
+      "avatar": {
+        "href": "https://dev.azure.com/AINULX001593580081/_apis/GraphProfile/MemberAvatars/aad.YjkxZTQ1NTQtYTU3Ny03YjNiLWI5NDUtMWY0NDliYWE1MzU0"
+      }
+    },
+    "id": "b91e4554-a577-6b3b-b945-1f449baa5354",
+    "uniqueName": "X00159358@myTUDublin.ie",
+    "imageUrl": "https://dev.azure.com/AINULX001593580081/_apis/GraphProfile/MemberAvatars/aad.YjkxZTQ1NTQtYTU3Ny03YjNiLWI5NDUtMWY0NDliYWE1MzU0",
+    "descriptor": "aad.YjkxZTQ1NTQtYTU3Ny03YjNiLWI5NDUtMWY0NDliYWE1MzU0"
+  },
+  "modifiedOn": "2023-04-25T08:03:20.230Z",
+  "isDeleted": false,
+  "lastRelease": {
+    "id": 81,
+    "name": "Release-4",
+    "artifacts": [],
+    "_links": {},
+    "description": "",
+    "releaseDefinition": {
+      "id": 16,
+      "projectReference": null,
+      "_links": {}
+    },
+    "createdOn": "2023-04-25T08:03:38.403Z",
+    "createdBy": {
+      "displayName": "Ainul Habib",
+      "url": "https://spsprodweu5.vssps.visualstudio.com/Aa41847a8-0681-4efa-a7a4-138fb239ea05/_apis/Identities/b91e4554-a577-6b3b-b945-1f449baa5354",
+      "_links": {
+        "avatar": {
+          "href": "https://dev.azure.com/AINULX001593580081/_apis/GraphProfile/MemberAvatars/aad.YjkxZTQ1NTQtYTU3Ny03YjNiLWI5NDUtMWY0NDliYWE1MzU0"
+        }
+      },
+      "id": "b91e4554-a577-6b3b-b945-1f449baa5354",
+      "uniqueName": "X00159358@myTUDublin.ie",
+      "imageUrl": "https://dev.azure.com/AINULX001593580081/_apis/GraphProfile/MemberAvatars/aad.YjkxZTQ1NTQtYTU3Ny03YjNiLWI5NDUtMWY0NDliYWE1MzU0",
+      "descriptor": "aad.YjkxZTQ1NTQtYTU3Ny03YjNiLWI5NDUtMWY0NDliYWE1MzU0"
+    }
+  },
+  "variables": {},
+  "variableGroups": [],
+  "environments": [
+    {
+      "id": 25,
+      "name": "Stage 1",
+      "rank": 1,
+      "owner": {
+        "displayName": "Ainul Habib",
+        "url": "https://spsprodweu5.vssps.visualstudio.com/Aa41847a8-0681-4efa-a7a4-138fb239ea05/_apis/Identities/b91e4554-a577-6b3b-b945-1f449baa5354",
+        "_links": {
+          "avatar": {
+            "href": "https://dev.azure.com/AINULX001593580081/_apis/GraphProfile/MemberAvatars/aad.YjkxZTQ1NTQtYTU3Ny03YjNiLWI5NDUtMWY0NDliYWE1MzU0"
+          }
+        },
+        "id": "b91e4554-a577-6b3b-b945-1f449baa5354",
+        "uniqueName": "X00159358@myTUDublin.ie",
+        "imageUrl": "https://dev.azure.com/AINULX001593580081/_apis/GraphProfile/MemberAvatars/aad.YjkxZTQ1NTQtYTU3Ny03YjNiLWI5NDUtMWY0NDliYWE1MzU0",
+        "descriptor": "aad.YjkxZTQ1NTQtYTU3Ny03YjNiLWI5NDUtMWY0NDliYWE1MzU0"
+      },
+      "variables": {},
+      "variableGroups": [],
+      "preDeployApprovals": {
+        "approvals": [
+          {
+            "rank": 1,
+            "isAutomated": false,
+            "isNotificationOn": false,
+            "approver": {
+              "displayName": "Ainul Habib",
+              "url": "https://spsprodweu5.vssps.visualstudio.com/Aa41847a8-0681-4efa-a7a4-138fb239ea05/_apis/Identities/b91e4554-a577-6b3b-b945-1f449baa5354",
+              "_links": {
+                "avatar": {
+                  "href": "https://dev.azure.com/AINULX001593580081/_apis/GraphProfile/MemberAvatars/aad.YjkxZTQ1NTQtYTU3Ny03YjNiLWI5NDUtMWY0NDliYWE1MzU0"
+                }
+              },
+              "id": "b91e4554-a577-6b3b-b945-1f449baa5354",
+              "uniqueName": "X00159358@myTUDublin.ie",
+              "imageUrl": "https://dev.azure.com/AINULX001593580081/_apis/GraphProfile/MemberAvatars/aad.YjkxZTQ1NTQtYTU3Ny03YjNiLWI5NDUtMWY0NDliYWE1MzU0",
+              "descriptor": "aad.YjkxZTQ1NTQtYTU3Ny03YjNiLWI5NDUtMWY0NDliYWE1MzU0"
+            },
+            "id": 73
+          }
+        ],
+        "approvalOptions": {
+          "requiredApproverCount": 0,
+          "releaseCreatorCanBeApprover": true,
+          "autoTriggeredAndPreviousEnvironmentApprovedCanBeSkipped": false,
+          "enforceIdentityRevalidation": false,
+          "timeoutInMinutes": 43200,
+          "executionOrder": 1
+        }
+      },
+      "deployStep": {
+        "id": 74
+      },
+      "postDeployApprovals": {
+        "approvals": [
+          {
+            "rank": 1,
+            "isAutomated": true,
+            "isNotificationOn": false,
+            "id": 75
+          }
+        ],
+        "approvalOptions": {
+          "requiredApproverCount": null,
+          "releaseCreatorCanBeApprover": false,
+          "autoTriggeredAndPreviousEnvironmentApprovedCanBeSkipped": false,
+          "enforceIdentityRevalidation": false,
+          "timeoutInMinutes": 0,
+          "executionOrder": 2
+        }
+      },
+      "deployPhases": [
+        {
+          "deploymentInput": {
+            "parallelExecution": {
+              "parallelExecutionType": 0
+            },
+            "agentSpecification": {
+              "identifier": "ubuntu-20.04"
+            },
+            "skipArtifactsDownload": false,
+            "artifactsDownloadInput": {
+              "downloadInputs": []
+            },
+            "queueId": 27,
+            "demands": [],
+            "enableAccessToken": false,
+            "timeoutInMinutes": 0,
+            "jobCancelTimeoutInMinutes": 1,
+            "condition": "succeeded()",
+            "overrideInputs": {}
+          },
+          "rank": 1,
+          "phaseType": 1,
+          "name": "Agent job",
+          "refName": null,
+          "workflowTasks": [
+            {
+              "environment": {},
+              "taskId": "8413c881-4959-43d5-8840-b4ea0ffc5cfd",
+              "version": "0.*",
+              "name": "Install Kubectl 1.25.3",
+              "refName": "",
+              "enabled": true,
+              "alwaysRun": false,
+              "continueOnError": false,
+              "timeoutInMinutes": 0,
+              "retryCountOnTaskFailure": 0,
+              "definitionType": "task",
+              "overrideInputs": {},
+              "condition": "succeeded()",
+              "inputs": {
+                "kubectlVersion": "1.25.3"
+              }
+            },
+            {
+              "environment": {},
+              "taskId": "46e4be58-730b-4389-8a2f-ea10b3e5e815",
+              "version": "2.*",
+              "name": "Azure CLI ",
+              "refName": "",
+              "enabled": true,
+              "alwaysRun": false,
+              "continueOnError": false,
+              "timeoutInMinutes": 0,
+              "retryCountOnTaskFailure": 0,
+              "definitionType": "task",
+              "overrideInputs": {},
+              "condition": "succeeded()",
+              "inputs": {
+                "connectedServiceNameARM": "90006b4c-a3e9-4cc4-a7eb-4c7a0f5ef3d7",
+                "scriptType": "bash",
+                "scriptLocation": "inlineScript",
+                "scriptPath": "",
+                "inlineScript": "az acr login --name ainhabacr",
+                "scriptArguments": "",
+                "powerShellErrorActionPreference": "stop",
+                "addSpnToEnvironment": "false",
+                "useGlobalConfig": "false",
+                "cwd": "",
+                "failOnStandardError": "false",
+                "powerShellIgnoreLASTEXITCODE": "false"
+              }
+            },
+            {
+              "environment": {},
+              "taskId": "cbc316a2-586f-4def-be79-488a1f503564",
+              "version": "1.*",
+              "name": "kubectl delete  from Green",
+              "refName": "",
+              "enabled": true,
+              "alwaysRun": false,
+              "continueOnError": true,
+              "timeoutInMinutes": 1,
+              "retryCountOnTaskFailure": 0,
+              "definitionType": "task",
+              "overrideInputs": {},
+              "condition": "succeeded()",
+              "inputs": {
+                "connectionType": "Kubernetes Service Connection",
+                "kubernetesServiceEndpoint": "0c69d759-6a86-47d9-8644-112d803ba9d3",
+                "azureSubscriptionEndpoint": "",
+                "azureResourceGroup": "",
+                "kubernetesCluster": "",
+                "useClusterAdmin": "false",
+                "namespace": "green",
+                "command": "delete",
+                "useConfigurationFile": "true",
+                "configurationType": "configuration",
+                "configuration": "$(System.DefaultWorkingDirectory)/_AINULX00159358_EAD_CA2_BP_DEPLOYMENT/LoadBalancer/ingress/ingress-loadbalancer-live.yaml",
+                "inline": "--ignore-not-found=true --grace-period=10 -f $(System.DefaultWorkingDirectory)/_AINULX00159358_EAD_CA2_BP_DEPLOYMENT/LoadBalancer/ingress/ingress-loadbalancer-live.yaml",
+                "arguments": "--ignore-not-found=true --grace-period=10",
+                "secretType": "dockerRegistry",
+                "secretArguments": "",
+                "containerRegistryType": "Azure Container Registry",
+                "dockerRegistryEndpoint": "",
+                "azureSubscriptionEndpointForSecrets": "",
+                "azureContainerRegistry": "",
+                "secretName": "",
+                "forceUpdate": "true",
+                "configMapName": "",
+                "forceUpdateConfigMap": "false",
+                "useConfigMapFile": "false",
+                "configMapFile": "",
+                "configMapArguments": "",
+                "versionOrLocation": "version",
+                "versionSpec": "1.13.2",
+                "checkLatest": "false",
+                "specifyLocation": "",
+                "cwd": "$(System.DefaultWorkingDirectory)",
+                "outputFormat": "yaml"
+              }
+            },
+            {
+              "environment": {},
+              "taskId": "cbc316a2-586f-4def-be79-488a1f503564",
+              "version": "1.*",
+              "name": "kubectl apply to Blue",
+              "refName": "",
+              "enabled": true,
+              "alwaysRun": false,
+              "continueOnError": false,
+              "timeoutInMinutes": 2,
+              "retryCountOnTaskFailure": 0,
+              "definitionType": "task",
+              "overrideInputs": {},
+              "condition": "succeededOrFailed()",
+              "inputs": {
+                "connectionType": "Kubernetes Service Connection",
+                "kubernetesServiceEndpoint": "656c3263-1b38-4565-be15-2078348b093f",
+                "azureSubscriptionEndpoint": "",
+                "azureResourceGroup": "",
+                "kubernetesCluster": "",
+                "useClusterAdmin": "false",
+                "namespace": "blue",
+                "command": "apply",
+                "useConfigurationFile": "true",
+                "configurationType": "configuration",
+                "configuration": "$(System.DefaultWorkingDirectory)/_AINULX00159358_EAD_CA2_BP_DEPLOYMENT/LoadBalancer/ingress/ingress-loadbalancer-live.yaml",
+                "inline": "",
+                "arguments": "",
+                "secretType": "dockerRegistry",
+                "secretArguments": "",
+                "containerRegistryType": "Azure Container Registry",
+                "dockerRegistryEndpoint": "",
+                "azureSubscriptionEndpointForSecrets": "",
+                "azureContainerRegistry": "",
+                "secretName": "",
+                "forceUpdate": "true",
+                "configMapName": "",
+                "forceUpdateConfigMap": "false",
+                "useConfigMapFile": "false",
+                "configMapFile": "",
+                "configMapArguments": "",
+                "versionOrLocation": "version",
+                "versionSpec": "1.13.2",
+                "checkLatest": "false",
+                "specifyLocation": "",
+                "cwd": "$(System.DefaultWorkingDirectory)",
+                "outputFormat": "json"
+              }
+            }
+          ]
+        }
+      ],
+      "environmentOptions": {
+        "emailNotificationType": "OnlyOnFailure",
+        "emailRecipients": "release.environment.owner;release.creator",
+        "skipArtifactsDownload": false,
+        "timeoutInMinutes": 0,
+        "enableAccessToken": false,
+        "publishDeploymentStatus": true,
+        "badgeEnabled": false,
+        "autoLinkWorkItems": false,
+        "pullRequestDeploymentEnabled": false
+      },
+      "demands": [],
+      "conditions": [],
+      "executionPolicy": {
+        "concurrencyCount": 1,
+        "queueDepthCount": 0
+      },
+      "schedules": [],
+      "currentRelease": {
+        "id": 81,
+        "url": "https://vsrm.dev.azure.com/AINULX001593580081/1122adba-64fd-4b7a-9ee2-88aa380bd62b/_apis/Release/releases/81",
+        "_links": {}
+      },
+      "retentionPolicy": {
+        "daysToKeep": 30,
+        "releasesToKeep": 3,
+        "retainBuild": true
+      },
+      "processParameters": {},
+      "properties": {
+        "BoardsEnvironmentType": {
+          "$type": "System.String",
+          "$value": "unmapped"
+        },
+        "LinkBoardsWorkItems": {
+          "$type": "System.String",
+          "$value": "False"
+        }
+      },
+      "preDeploymentGates": {
+        "id": 0,
+        "gatesOptions": null,
+        "gates": []
+      },
+      "postDeploymentGates": {
+        "id": 0,
+        "gatesOptions": null,
+        "gates": []
+      },
+      "environmentTriggers": [],
+      "badgeUrl": "https://vsrm.dev.azure.com/AINULX001593580081/_apis/public/Release/badge/1122adba-64fd-4b7a-9ee2-88aa380bd62b/16/25"
+    }
+  ],
+  "artifacts": [
+    {
+      "sourceId": "c63ab85f-aa90-4010-9323-cd80f67d2a59:AINULX00159358/EAD_CA2_BP_DEPLOYMENT",
+      "type": "GitHub",
+      "alias": "_AINULX00159358_EAD_CA2_BP_DEPLOYMENT",
+      "definitionReference": {
+        "artifactSourceDefinitionUrl": {
+          "id": "https://github.com/AINULX00159358/EAD_CA2_BP_DEPLOYMENT",
+          "name": ""
+        },
+        "branch": {
+          "id": "main",
+          "name": "main"
+        },
+        "checkoutNestedSubmodules": {
+          "id": "True",
+          "name": "Any nested submodules within"
+        },
+        "checkoutSubmodules": {
+          "id": "",
+          "name": ""
+        },
+        "connection": {
+          "id": "c63ab85f-aa90-4010-9323-cd80f67d2a59",
+          "name": "AINULX00159358"
+        },
+        "defaultVersionSpecific": {
+          "id": "",
+          "name": ""
+        },
+        "defaultVersionType": {
+          "id": "latestFromBranchType",
+          "name": "Latest from the default branch"
+        },
+        "definition": {
+          "id": "AINULX00159358/EAD_CA2_BP_DEPLOYMENT",
+          "name": "AINULX00159358/EAD_CA2_BP_DEPLOYMENT"
+        },
+        "fetchDepth": {
+          "id": "",
+          "name": ""
+        },
+        "gitHubRepositoryId": {
+          "id": "625465690",
+          "name": "625465690"
+        },
+        "gitLfsSupport": {
+          "id": "",
+          "name": ""
+        }
+      },
+      "isPrimary": true,
+      "isRetained": false
+    }
+  ],
+  "triggers": [],
+  "releaseNameFormat": "Release-$(rev:r)",
+  "tags": [],
+  "properties": {
+    "DefinitionCreationSource": {
+      "$type": "System.String",
+      "$value": "ReleaseClone"
+    },
+    "IntegrateBoardsWorkItems": {
+      "$type": "System.String",
+      "$value": "False"
+    },
+    "IntegrateJiraWorkItems": {
+      "$type": "System.String",
+      "$value": "false"
+    }
+  },
+  "id": 16,
+  "name": "GreenToBlue",
+  "path": "\\SERVICES",
+  "projectReference": null,
+  "url": "https://vsrm.dev.azure.com/AINULX001593580081/1122adba-64fd-4b7a-9ee2-88aa380bd62b/_apis/Release/definitions/16",
+  "_links": {
+    "self": {
+      "href": "https://vsrm.dev.azure.com/AINULX001593580081/1122adba-64fd-4b7a-9ee2-88aa380bd62b/_apis/Release/definitions/16"
+    },
+    "web": {
+      "href": "https://dev.azure.com/AINULX001593580081/1122adba-64fd-4b7a-9ee2-88aa380bd62b/_release?definitionId=16"
+    }
+  }
+}
