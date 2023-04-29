@@ -30,6 +30,17 @@ steps:
       kubernetesServiceEndpoint: 'MongoSvcConn'
       namespace: 'mongo'
       command: 'apply'
+      arguments: '-f $(Build.SourcesDirectory)/helm/templates/mongodb-secrets.yaml'
+      secretType: 'dockerRegistry'
+      containerRegistryType: 'Azure Container Registry'
+
+  - task: Kubernetes@1
+    condition: eq(variables.deploy, true)
+    inputs:
+      connectionType: 'Kubernetes Service Connection'
+      kubernetesServiceEndpoint: 'MongoSvcConn'
+      namespace: 'mongo'
+      command: 'apply'
       arguments: '-f $(Build.SourcesDirectory)/mongodb/mongodb-deployment.yaml'
       secretType: 'dockerRegistry'
       containerRegistryType: 'Azure Container Registry'

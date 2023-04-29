@@ -2,9 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   # deployment name
-  name: mongodb-app
+  name: mongodb-standalone
+  namespace: "mongo"
   labels:
-    app: mongodb
+    app: "mongodb"
 spec:
   # modify replicas according to your case
   replicas: 1
@@ -18,11 +19,43 @@ spec:
         app: mongodb
     spec:
       # pod contains 1 container
+#      volumes:
+#        - name: "mongodb-data"
+#          persistentVolumeClaim:
+#            claimName: "mongodb-pvc"
+      volumes:
+        - name: mongo-secrets
+          secret:
+            secretName: mongo-secrets
+            items:
+              - key: MONGO_USERNAME
+                path: MONGO_USERNAME
+                mode: 0444
+              - key: MONGO_PASSWORD
+                path: MONGO_PASSWORD
+                mode: 0444
       containers:
       - image: mongo
         name: mongodb
         ports:
         - containerPort: 27017
+#        volumeMounts:
+#          - name: "mongodb-data"
+#            mountPath: "/data/db"
+        volumeMounts:
+          - name: mongo-secrets
+            mountPath: /etc/mongo-secrets
+            readOnly: true
+#        env:
+#          - name: MONGO_INITDB_ROOT_USERNAME
+#            value: mongo
+#          - name: MONGO_INITDB_ROOT_PASSWORD
+#            value: 1f2d1e2e67df
+        env:
+          - name: MONGO_INITDB_ROOT_USERNAME_FILE
+            value: /etc/mongo-secrets/MONGO_USERNAME
+          - name: MONGO_INITDB_ROOT_PASSWORD_FILE
+            value: /etc/mongo-secrets/MONGO_PASSWORD
 ---
 apiVersion: v1
 kind: Service
@@ -30,6 +63,7 @@ metadata:
   labels:
     app: mongodb
   name: mongodb-service
+  namespace: "mongo"
 spec:
   ports:
   - port: 27017
