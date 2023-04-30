@@ -22,5 +22,5 @@ steps:
     templateLocation: 'Linked artifact'
     csmFile: '$(Build.SourcesDirectory)/IaC/template.json'
     csmParametersFile: '$(Build.SourcesDirectory)/IaC/parameters.json'
-    deploymentMode: 'Complete'
+    deploymentMode: 'Incremental'
     deploymentName: 'ainhabEADaks'
