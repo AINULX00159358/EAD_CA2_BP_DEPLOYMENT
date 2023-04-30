@@ -1,0 +1,26 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- none
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Subscription'
+    azureResourceManagerConnection: 'Azure for Students(7263e463-da66-4888-a897-f34f5acea14b)'
+    subscriptionId: '7263e463-da66-4888-a897-f34f5acea14b'
+    location: 'North Europe'
+    templateLocation: 'Linked artifact'
+    csmFile: '$(Build.SourcesDirectory)/IaC/template.json'
+    csmParametersFile: '$(Build.SourcesDirectory)/IaC/parameters.json'
+    deploymentMode: 'Complete'
+    deploymentName: 'ainhabEADaks'
