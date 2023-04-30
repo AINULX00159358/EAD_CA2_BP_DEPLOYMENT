@@ -3,8 +3,7 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-trigger:
-- main
+trigger: none
 
 pool:
   vmImage: ubuntu-latest
@@ -27,4 +26,6 @@ steps:
     azureSubscription: 'Azure for Students(7263e463-da66-4888-a897-f34f5acea14b)'
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
-    inlineScript: 'kubectl apply -f $(Build.SourcesDirectory)/namespace.yaml'
+    inlineScript: |
+      az acr login --name 'ainhabAKS'
+      kubectl apply -f $(Build.SourcesDirectory)/namespace.yaml
