@@ -28,4 +28,5 @@ steps:
     scriptLocation: 'inlineScript'
     inlineScript: |
       az acr login --name 'ainhabAKS'
+      az aks get-credentials --resource-group k8s-resource-group --name ainhabAKS
       kubectl apply -f $(Build.SourcesDirectory)/namespace.yaml
