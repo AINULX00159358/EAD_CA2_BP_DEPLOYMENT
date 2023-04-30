@@ -46,7 +46,6 @@ steps:
       scriptType: 'bash'
       scriptLocation: 'inlineScript'
       inlineScript: |
-        az aks get-credentials --resource-group k8s-resource-group --name ainhabAKS
         helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
         helm repo update
         helm -n ingress-nginx install ingress-nginx ingress-nginx/ingress-nginx
