@@ -2,137 +2,102 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "managedClusters_ainhabAKSCluster_name": {
-            "defaultValue": "ainhabAKSCluster",
-            "type": "String"
+        "clusterName": {
+            "defaultValue": "aks101cluster",
+            "type": "String",
+            "metadata": {
+                "description": "The name of the Managed Cluster resource."
+            }
         },
-        "workspaces_ainhab_log_analytics_externalid": {
-            "defaultValue": "/subscriptions/7263e463-da66-4888-a897-f34f5acea14b/resourceGroups/k8s-resource-group/providers/microsoft.operationalinsights/workspaces/ainhab-log-analytics",
-            "type": "String"
+        "location": {
+            "defaultValue": "[resourceGroup().location]",
+            "type": "String",
+            "metadata": {
+                "description": "The location of the Managed Cluster resource."
+            }
         },
-        "publicIPAddresses_95757515_b2bd_4741_9ce4_80e96d850b9d_externalid": {
-            "defaultValue": "/subscriptions/7263e463-da66-4888-a897-f34f5acea14b/resourceGroups/MC_k8s-resource-group_ainhabAKSCluster_northeurope/providers/Microsoft.Network/publicIPAddresses/95757515-b2bd-4741-9ce4-80e96d850b9d",
-            "type": "String"
+        "dnsPrefix": {
+            "type": "String",
+            "metadata": {
+                "description": "Optional DNS prefix to use with hosted Kubernetes API server FQDN."
+            }
+        },
+        "osDiskSizeGB": {
+            "defaultValue": 0,
+            "minValue": 0,
+            "maxValue": 1023,
+            "type": "Int",
+            "metadata": {
+                "description": "Disk size (in GB) to provision for each of the agent pool nodes. This value ranges from 0 to 1023. Specifying 0 will apply the default disk size for that agentVMSize."
+            }
+        },
+        "agentCount": {
+            "defaultValue": 3,
+            "minValue": 1,
+            "maxValue": 50,
+            "type": "Int",
+            "metadata": {
+                "description": "The number of nodes for the cluster."
+            }
+        },
+        "agentVMSize": {
+            "defaultValue": "standard_d2s_v3",
+            "type": "String",
+            "metadata": {
+                "description": "The size of the Virtual Machine."
+            }
+        },
+        "linuxAdminUsername": {
+            "type": "String",
+            "metadata": {
+                "description": "User name for the Linux Virtual Machines."
+            }
+        },
+        "sshRSAPublicKey": {
+            "type": "String",
+            "metadata": {
+                "description": "Configure all linux machines with the SSH RSA public key string. Your key should include three parts, for example 'ssh-rsa AAAAB...snip...UcyupgH azureuser@linuxvm'"
+            }
         }
     },
-    "variables": {},
     "resources": [
         {
             "type": "Microsoft.ContainerService/managedClusters",
-            "apiVersion": "2023-01-02-preview",
-            "name": "[parameters('managedClusters_ainhabAKSCluster_name')]",
-            "location": "northeurope",
-            "sku": {
-                "name": "Basic",
-                "tier": "Free"
+            "apiVersion": "2022-05-02-preview",
+            "name": "[parameters('clusterName')]",
+            "location": "[parameters('location')]",
+            "identity": {
+                "type": "SystemAssigned"
             },
             "properties": {
-                "kubernetesVersion": "1.24.10",
-                "dnsPrefix": "ainhabAKSC-k8s-resource-gro-7263e4",
+                "dnsPrefix": "[parameters('dnsPrefix')]",
                 "agentPoolProfiles": [
                     {
-                        "name": "nodepool1",
-                        "count": 0,
-                        "vmSize": "Standard_DS2_v2",
-                        "osDiskSizeGB": 128,
-                        "osDiskType": "Managed",
-                        "maxPods": 110,
-                        "type": "VirtualMachineScaleSets",
-                        "powerState": {
-                            "code": "Running"
-                        },
-                        "orchestratorVersion": "1.24.10",
-                        "mode": "System",
+                        "name": "agentpool",
+                        "osDiskSizeGB": "[parameters('osDiskSizeGB')]",
+                        "count": "[parameters('agentCount')]",
+                        "vmSize": "[parameters('agentVMSize')]",
                         "osType": "Linux",
-                        "osSKU": "Ubuntu",
-                        "enableFIPS": false
+                        "mode": "System"
                     }
                 ],
                 "linuxProfile": {
-                    "adminUsername": "azureuser",
+                    "adminUsername": "[parameters('linuxAdminUsername')]",
                     "ssh": {
                         "publicKeys": [
                             {
-                                "keyData": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDEgOwmOUitC4580GrFC3DhJE4pknZP+lOI/Eb8AGbQrv/6KIPgnNb2YuwSHCmBTb/+a/yqUOxCsKdIHBsj7kml20ct/sWNoOU4zur27bivtUUPStSaQVcQxv3dke2dBzIw+3zlys0IG3RdtgfDL0Z4ccUqCYLlZqJjWO81gC9HFKZlO+FIDvZImK53SU1a5gmbwCpOTBpfEZy7LbmfUTdNJ8WoXQEWO+KNfNZ0vKjRmaAI7cOKsBorxHPHPdFqsshOuSCgj+QTXrITTI8Yi/VMLlt3IISMJ94H1+hq9BnqNA2el8UxSBwMcVNWZa43R27S50k11Ioc5W1FyL0UKpDj"
+                                "keyData": "[parameters('sshRSAPublicKey')]"
                             }
                         ]
                     }
-                },
-                "servicePrincipalProfile": {
-                    "clientId": "714ef384-8cff-47dc-be2a-de2bafc3898c"
-                },
-                "addonProfiles": {
-                    "omsagent": {
-                        "enabled": true,
-                        "config": {
-                            "logAnalyticsWorkspaceResourceID": "[parameters('workspaces_ainhab_log_analytics_externalid')]"
-                        }
-                    }
-                },
-                "nodeResourceGroup": "[concat('MC_k8s-resource-group_', parameters('managedClusters_ainhabAKSCluster_name'), '_northeurope')]",
-                "enableRBAC": true,
-                "networkProfile": {
-                    "networkPlugin": "kubenet",
-                    "loadBalancerSku": "Standard",
-                    "loadBalancerProfile": {
-                        "managedOutboundIPs": {
-                            "count": 1
-                        },
-                        "effectiveOutboundIPs": [
-                            {
-                                "id": "[parameters('publicIPAddresses_95757515_b2bd_4741_9ce4_80e96d850b9d_externalid')]"
-                            }
-                        ],
-                        "backendPoolType": "nodeIPConfiguration"
-                    },
-                    "podCidr": "10.244.0.0/16",
-                    "serviceCidr": "10.0.0.0/16",
-                    "dnsServiceIP": "10.0.0.10",
-                    "dockerBridgeCidr": "172.17.0.1/16",
-                    "outboundType": "loadBalancer"
-                },
-                "securityProfile": {},
-                "storageProfile": {
-                    "diskCSIDriver": {
-                        "enabled": true,
-                        "version": "v1"
-                    },
-                    "fileCSIDriver": {
-                        "enabled": true
-                    },
-                    "snapshotController": {
-                        "enabled": true
-                    }
-                },
-                "oidcIssuerProfile": {
-                    "enabled": false
-                },
-                "workloadAutoScalerProfile": {}
-            }
-        },
-        {
-            "type": "Microsoft.ContainerService/managedClusters/agentPools",
-            "apiVersion": "2023-01-02-preview",
-            "name": "[concat(parameters('managedClusters_ainhabAKSCluster_name'), '/nodepool1')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.ContainerService/managedClusters', parameters('managedClusters_ainhabAKSCluster_name'))]"
-            ],
-            "properties": {
-                "count": 0,
-                "vmSize": "Standard_DS2_v2",
-                "osDiskSizeGB": 128,
-                "osDiskType": "Managed",
-                "maxPods": 110,
-                "type": "VirtualMachineScaleSets",
-                "powerState": {
-                    "code": "Running"
-                },
-                "orchestratorVersion": "1.24.10",
-                "mode": "System",
-                "osType": "Linux",
-                "osSKU": "Ubuntu",
-                "enableFIPS": false
+                }
             }
         }
-    ]
+    ],
+    "outputs": {
+        "controlPlaneFQDN": {
+            "type": "String",
+            "value": "[reference(resourceId('Microsoft.ContainerService/managedClusters', parameters('clusterName'))).fqdn]"
+        }
+    }
 }

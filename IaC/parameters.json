@@ -2,14 +2,29 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "managedClusters_ainhabAKSCluster_name": {
-            "value": null
+        "clusterName": {
+            "value": "aksainhab"
         },
-        "workspaces_ainhab_log_analytics_externalid": {
-            "value": null
+        "location": {
+            "value": "northeurope"
         },
-        "publicIPAddresses_95757515_b2bd_4741_9ce4_80e96d850b9d_externalid": {
-            "value": null
+        "dnsPrefix": {
+            "value": "aksainhab"
+        },
+        "osDiskSizeGB": {
+            "value": 50
+        },
+        "agentCount": {
+            "value": 1
+        },
+        "agentVMSize": {
+            "value": "standard_d2s_v3"
+        },
+        "linuxAdminUsername": {
+            "value": "azureuser"
+        },
+        "sshRSAPublicKey": {
+            "value": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDEgOwmOUitC4580GrFC3DhJE4pknZP+lOI/Eb8AGbQrv/6KIPgnNb2YuwSHCmBTb/+a/yqUOxCsKdIHBsj7kml20ct/sWNoOU4zur27bivtUUPStSaQVcQxv3dke2dBzIw+3zlys0IG3RdtgfDL0Z4ccUqCYLlZqJjWO81gC9HFKZlO+FIDvZImK53SU1a5gmbwCpOTBpfEZy7LbmfUTdNJ8WoXQEWO+KNfNZ0vKjRmaAI7cOKsBorxHPHPdFqsshOuSCgj+QTXrITTI8Yi/VMLlt3IISMJ94H1+hq9BnqNA2el8UxSBwMcVNWZa43R27S50k11Ioc5W1FyL0UKpDj"
         }
     }
 }
