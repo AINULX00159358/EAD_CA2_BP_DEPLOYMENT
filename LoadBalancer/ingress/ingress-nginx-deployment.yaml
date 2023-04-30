@@ -3,8 +3,7 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-trigger:
-- main
+trigger: none
 
 pool:
   vmImage: ubuntu-latest
@@ -37,25 +36,25 @@ steps:
 #      inlineScript: |
 #        az aks get-credentials --resource-group k8s-resource-group --name ainhabAKS
 
-  - task: AzureCLI@2
+# - task: AzureCLI@2
+#   inputs:
+#     azureSubscription: 'Azure for Students(7263e463-da66-4888-a897-f34f5acea14b)'
+#     scriptType: 'bash'
+#     scriptLocation: 'inlineScript'
+#     inlineScript: |
+#       helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+#       helm repo update
+#       helm upgrade --install -n ingress-nginx ingress-nginx 
+  - task: HelmDeploy@0
     inputs:
+      connectionType: 'Azure Resource Manager'
       azureSubscription: 'Azure for Students(7263e463-da66-4888-a897-f34f5acea14b)'
-      scriptType: 'bash'
-      scriptLocation: 'inlineScript'
-      inlineScript: |
-        helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
-        helm repo update
-        helm upgrade --install -n ingress-nginx ingress-nginx ingress-nginx/ingress-nginx
+      azureResourceGroup: 'k8s-resource-group'
+      kubernetesCluster: 'ainhabAKS'
+      namespace: 'ingress-nginx'
+      command: 'upgrade'
+      chartType: 'Name'
+      chartName: 'ingress-nginx/ingress-nginx'
+      releaseName: 'ingress-nginx'
+      arguments: '--install'
 
-#
-#  - task: HelmDeploy@0
-#    inputs:
-#      connectionType: 'Kubernetes Service Connection'
-#      kubernetesServiceConnection: 'ingress-basic'
-#      namespace: 'ingress-basic'
-#      command: 'upgrade'
-#      chartType: 'Name'
-#      chartName: 'ingress-nginx/ingress-nginx'
-#      releaseName: 'ingress-nginx'
-#      arguments: "--install"
-#      overrideValues: 'controller.service.annotations."service.beta.kubernetes.io/azure-load-balancer-health-probe-request-path"=/healthz'
