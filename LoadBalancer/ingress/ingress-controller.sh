@@ -1,4 +1,4 @@
-NAMESPACE=ingress-basic
+NAMESPACE=ingress-nginx
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 helm repo update
 helm uninstall ingress-nginx -n ${NAMESPACE}
