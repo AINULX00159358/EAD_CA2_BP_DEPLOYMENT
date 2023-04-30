@@ -23,4 +23,4 @@ steps:
     csmFile: '$(Build.SourcesDirectory)/IaC/template.json'
     csmParametersFile: '$(Build.SourcesDirectory)/IaC/parameters.json'
     deploymentMode: 'Incremental'
-    deploymentName: 'ainhabEADaks'
+    deploymentName: 'aksainhab'
