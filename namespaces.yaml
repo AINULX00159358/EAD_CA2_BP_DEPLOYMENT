@@ -1,0 +1,27 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: mongo
+  labels:
+    name: mongo
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: blue
+  labels:
+    name: blue
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: green
+  labels:
+    name: green
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: ingress-basic
+  labels:
+    name: ingress-basic
