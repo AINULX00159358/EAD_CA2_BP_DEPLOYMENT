@@ -1,0 +1,13 @@
+apiVersion: datadoghq.com/v2alpha1
+kind: DatadogAgent
+metadata:
+  name: datadog
+spec:
+  global:
+    credentials:
+      apiKey: 4b3554308d8e3b31ed9d8ec8a11e540d
+    site: datadoghq.eu
+
+  features:
+    eventCollection:
+      collectKubernetesEvents: true
