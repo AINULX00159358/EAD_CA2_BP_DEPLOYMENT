@@ -1,0 +1,41 @@
+# mongodb-deployment
+# ubuntu 20.04
+steps:
+- task: KubectlInstaller@0
+  displayName: 'Install Kubectl 1.25.4'
+  inputs:
+    kubectlVersion: 1.25.4
+
+steps:
+- task: DockerInstaller@0
+  displayName: 'Install Docker 17.09.0-ce'
+
+steps:
+- task: AzureCLI@2
+  displayName: 'Trivy Scan Mongo database image'
+  inputs:
+    azureSubscription: 'Azure for Students(7263e463-da66-4888-a897-f34f5acea14b)'
+    scriptType: bash
+    scriptPath: '$(System.DefaultWorkingDirectory)/BP_DEPLOYMENT/mongodb/mongo-trivy-scan.sh'
+
+steps:
+- task: KubernetesManifest@1
+  displayName: 'deploy mongo secrets'
+  inputs:
+    connectionType: azureResourceManager
+    azureSubscriptionConnection: 'Azure for Students(7263e463-da66-4888-a897-f34f5acea14b)'
+    azureResourceGroup: 'k8s-resource-group'
+    kubernetesCluster: ainhabAKS
+    namespace: mongo
+    manifests: '$(System.DefaultWorkingDirectory)/BP_DEPLOYMENT/helm/templates/mongodb-secrets.yaml'
+    
+steps:
+- task: KubernetesManifest@1
+  displayName: 'deploy mongo db'
+  inputs:
+    connectionType: azureResourceManager
+    azureSubscriptionConnection: 'Azure for Students(7263e463-da66-4888-a897-f34f5acea14b)'
+    azureResourceGroup: 'k8s-resource-group'
+    kubernetesCluster: ainhabAKS
+    namespace: mongo
+    manifests: '$(System.DefaultWorkingDirectory)/BP_DEPLOYMENT/mongodb/mongodb-deployment.yaml'

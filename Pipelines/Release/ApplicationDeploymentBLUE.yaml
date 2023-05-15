@@ -1,0 +1,40 @@
+# Application Deployment BLUE 
+# Ubuntu 20.04
+steps:
+- task: KubectlInstaller@0
+  displayName: 'Install Kubectl 1.25.4'
+  inputs:
+    kubectlVersion: 1.25.4
+
+steps:
+- task: HelmInstaller@0
+  displayName: 'Install Helm 2.14.1'
+
+steps:
+- task: AzureCLI@2
+  displayName: 'Azure CLI '
+  inputs:
+    azureSubscription: 'Azure for Students(7263e463-da66-4888-a897-f34f5acea14b)'
+    scriptType: bash
+    scriptLocation: inlineScript
+    inlineScript: 'az acr login --name ainhabacr.azurecr.io'
+    addSpnToEnvironment: true
+  env:
+    ACR.Name: ainhabacr
+
+steps:
+- task: HelmDeploy@0
+  displayName: 'Deploy to Blue'
+  inputs:
+    azureSubscription: 'Azure for Students(7263e463-da66-4888-a897-f34f5acea14b)'
+    azureResourceGroup: 'k8s-resource-group'
+    kubernetesCluster: ainhabAKS
+    namespace: blue
+    command: upgrade
+    chartName: 'oci://ainhabacr.azurecr.io/charts/bpwebapp'
+    chartVersion: 1.0.0
+    releaseName: bpwebapp
+    overrideValues: 'space=blue'
+    force: true
+    arguments: '--install'
+

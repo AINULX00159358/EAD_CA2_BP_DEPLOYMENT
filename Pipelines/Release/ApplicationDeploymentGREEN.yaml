@@ -1,0 +1,33 @@
+# Application Deployment GREEN
+steps:
+- task: AzureCLI@2
+  displayName: 'Azure CLI '
+  inputs:
+    azureSubscription: 'Azure for Students(7263e463-da66-4888-a897-f34f5acea14b)'
+    scriptType: bash
+    scriptLocation: inlineScript
+    inlineScript: 'az acr login --name ainhabacr.azurecr.io'
+  env:
+    ACR.Name: ainhabacr
+
+steps:
+- task: HelmInstaller@0
+  displayName: 'Install Helm 3.9.3'
+  inputs:
+    helmVersion: 3.9.3
+    kubectlVersion: 1.26.3
+
+steps:
+- task: HelmDeploy@0
+  displayName: 'Deploy to Green'
+  inputs:
+    azureSubscription: 'Azure for Students(7263e463-da66-4888-a897-f34f5acea14b)'
+    azureResourceGroup: 'k8s-resource-group'
+    kubernetesCluster: ainhabAKS
+    namespace: green
+    command: upgrade
+    chartName: 'oci://ainhabacr.azurecr.io/charts/bpwebapp'
+    chartVersion: 1.0.0
+    releaseName: bpwebapp
+    force: true
+    arguments: '--install'
